@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { Github, ExternalLink } from 'lucide-react';
 import Image from "next/image";
-import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
+import { gsap, useGSAP } from "@/lib/gsap";
 import { CATEGORY_COLOR_MAP } from "@/config/skillColors";
 
 const TECH_TO_CATEGORY_MAP: Record<string, keyof typeof CATEGORY_COLOR_MAP> = {
@@ -119,7 +119,7 @@ const Projects = () => {
             tags: ['Vue.js', 'Vuetify', 'JavaScript', 'Firestore', 'Firebase Auth', 'Full-Stack', 'CMS'],
             github: '#',
             demo: 'https://alice-nilsdotter.vercel.app',
-            imagePath: '/alice.png',
+            imagePath: '/alice.webp',
             imageAlt: 'Screenshot of Alice Nilsdotter\'s portfolio website.',
         },
         {
@@ -128,7 +128,7 @@ const Projects = () => {
             tags: ['Kaggle', 'Python', 'PostgreSQL', 'R (tidyverse/ggplot2)'],
             github: 'https://github.com/mutumba23/AIK_Case_Study',
             demo: '#',
-            imagePath: '/aik_age_trend_visualization_thumbnail.png',
+            imagePath: '/aik_age_trend_visualization_thumbnail.webp',
             imageAlt: 'Screenshot of AIK Case Study.',
         },
         {
@@ -155,7 +155,7 @@ const Projects = () => {
             tags: ['JavaScript', 'Phaser', 'Colyseus', 'Supabase', 'Express', 'Node.js', 'Firebase Auth'],
             github: '#', // Keep private for now
             demo: '#', // Use link to video/GIF walkthrough
-            imagePath: '',
+            imagePath: '/wotmud.webp',
             imageAlt: 'Screenshot of WotMud.',
         },
         {
@@ -175,7 +175,7 @@ const Projects = () => {
             tags: ['Vue.js', 'Vuetify', 'Vite', 'Firestore', 'Firebase Auth', 'Google Maps API', 'JavaScript'],
             github: '#',
             demo: 'https://travel-planner-virid-tau.vercel.app/',
-            imagePath: '/travel_planner.png',
+            imagePath: '/travel_planner.webp',
             imageAlt: 'Screenshot of Travel Planner.',
         },
         {
@@ -194,7 +194,7 @@ const Projects = () => {
             tags: ['Vue.js', 'Firestore', 'Firebase Auth', 'System Design', 'Domain Modeling', 'JavaScript'],
             github: '#',
             demo: '#',
-            imagePath: '',
+            imagePath: '/fantasy.webp',
             imageAlt: 'Screenshot of the team management interface or a data flow diagram.',
         },
         {
@@ -207,7 +207,7 @@ const Projects = () => {
             tags: ['Python', 'Tkinter / ttk', 'Automation', 'Concurrency / Threading', 'pynput', 'GUI Development'],
             github: 'https://github.com/mutumba23/auto_clicker',
             demo: '#', 
-            imagePath: '/autoclicker.png',
+            imagePath: '/autoclicker.webp',
             imageAlt: 'Screenshot of the Auto Clicker utility interface showing configuration settings.',
         },
     ];

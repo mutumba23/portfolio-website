@@ -8,7 +8,7 @@ const Hero = () => {
                 <div className="grid gap-8 md:grid-cols-2 md:items-center">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-                            Hi, I'm <span className="text-accent">Philip</span>
+                            Hi, I&apos;m <span className="text-accent">Philip</span>
                             <br />
                             <span className="text-2xl sm:text-3xl font-semibold text-slate-400">
                                 IT Support Specialist with a focus on <span className="text-green-400">Automation Development</span>
@@ -36,7 +36,7 @@ const Hero = () => {
                     <div className="flex justify-center md:justify-end">
                         <div className="relative h-48 w-48 md:h-64 md:w-64">
                             <Image
-                                src="/profile.jpg"
+                                src="/profile.webp"
                                 alt="Profile Photo"
                                 fill
                                 className="rounded-full border-4 border-slate-700 object-cover shadow-2xl"
