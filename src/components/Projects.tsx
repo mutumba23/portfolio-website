@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Github, ExternalLink } from 'lucide-react';
 import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -75,6 +75,39 @@ const parseDescription = (description: string) => {
         }
         return part;
     });
+};
+
+// Define this component INSIDE or ABOVE the Projects component
+const ProjectDescription = ({ description }: { description: string }) => {
+    // State to track if the description is expanded
+    const [isExpanded, setIsExpanded] = useState(false);
+    
+    // Check if the description is too long to fit in 4 lines.
+    // This is an ESTIMATE, as line height varies, but it works well enough.
+    const isLongDescription = description.split('\n').length > 5 || description.length > 300; 
+
+    // Define the classes based on state
+    const descriptionClasses = `mb-4 flex-1 text-slate-400 whitespace-pre-line pr-2 ${
+        isExpanded ? '' : 'line-clamp-4' // Apply line-clamp-4 ONLY when NOT expanded
+    }`;
+
+    return (
+        <>
+            <p className={descriptionClasses}>
+                {parseDescription(description)}
+            </p>
+            
+            {/* Show the button only if the text is potentially long */}
+            {isLongDescription && (
+                <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="text-sm font-medium text-accent hover:text-accent/80 transition-colors self-start mb-4"
+                >
+                    {isExpanded ? 'Read Less' : 'Read More'}
+                </button>
+            )}
+        </>
+    );
 };
 
 const Projects = () => {
@@ -246,11 +279,7 @@ const Projects = () => {
                                 <h3 className="mb-2 text-xl font-semibold text-foreground">
                                     {project.title}
                                 </h3>
-                                <p
-                                    className="mb-4 flex-1 text-slate-400 whitespace-pre-line max-h-40 overflow-y-auto pr-2"
-                                >
-                                    {parseDescription(project.description)}
-                                </p>
+                                <ProjectDescription description={project.description} />
                                 <div className="mb-6 flex flex-wrap gap-2">
                                     {project.tags.map((tag) => {
                                         const category = TECH_TO_CATEGORY_MAP[tag] || 'All';
