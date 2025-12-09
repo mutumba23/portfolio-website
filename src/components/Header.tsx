@@ -1,11 +1,10 @@
-    'use client'; // Ensure this is present for hooks
+    'use client';
 
     import Link from 'next/link';
-    import { Menu, X } from 'lucide-react'; // Import X for the close icon
-    import { useState } from 'react'; // ⬅️ NEW: Import useState
+    import { Menu, X } from 'lucide-react'; 
+    import { useState } from 'react';
 
     const Header = () => {
-        // ⬅️ NEW: State to manage the mobile menu's open/closed status
         const [isMenuOpen, setIsMenuOpen] = useState(false);
 
         const navItems = [

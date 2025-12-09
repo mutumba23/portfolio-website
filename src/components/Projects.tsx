@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import { Github, ExternalLink } from 'lucide-react';
 import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 import { CATEGORY_COLOR_MAP } from "@/config/skillColors";
 
 const TECH_TO_CATEGORY_MAP: Record<string, keyof typeof CATEGORY_COLOR_MAP> = {
@@ -79,36 +81,77 @@ const parseDescription = (description: string) => {
 
 // Define this component INSIDE or ABOVE the Projects component
 const ProjectDescription = ({ description }: { description: string }) => {
-    // State to track if the description is expanded
     const [isExpanded, setIsExpanded] = useState(false);
-    
-    // Check if the description is too long to fit in 4 lines.
-    // This is an ESTIMATE, as line height varies, but it works well enough.
-    const isLongDescription = description.split('\n').length > 5 || description.length > 300; 
+    const descriptionRef = useRef<HTMLParagraphElement>(null);
 
-    // Define the classes based on state
-    const descriptionClasses = `mb-4 flex-1 text-slate-400 whitespace-pre-line pr-2 ${
-        isExpanded ? '' : 'line-clamp-4' // Apply line-clamp-4 ONLY when NOT expanded
-    }`;
+    // Long description check
+    const isLongDescription =
+        description.split("\n").length > 5 || description.length > 300;
+
+    // GSAP height animation
+    const toggleExpand = () => {
+        if (!descriptionRef.current) return;
+
+        const el = descriptionRef.current;
+        const fullHeight = el.scrollHeight;
+
+        if (!isExpanded) {
+            // EXPAND
+            gsap.fromTo(
+                el,
+                { maxHeight: "5rem" },
+                {
+                    maxHeight: fullHeight,
+                    duration: 0.4,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        // Let the element go natural after animation
+                        el.style.maxHeight = "none";
+                        ScrollTrigger.refresh();
+                    }
+                }
+            );
+        } else {
+            // COLLAPSE
+            gsap.fromTo(
+                el,
+                { maxHeight: el.scrollHeight },
+                {
+                    maxHeight: "5rem",
+                    duration: 0.4,
+                    ease: "power2.inOut",
+                    onComplete: () => ScrollTrigger.refresh()
+                }
+            );
+        }
+
+        setIsExpanded(!isExpanded);
+    };
+
+
 
     return (
         <>
-            <p className={descriptionClasses}>
+            <p
+                ref={descriptionRef}
+                className="mb-4 text-slate-400 whitespace-pre-line pr-2"
+                style={{ overflow: "hidden", maxHeight: isExpanded ? "none" : "5rem" }}
+            >
                 {parseDescription(description)}
             </p>
-            
-            {/* Show the button only if the text is potentially long */}
+
             {isLongDescription && (
                 <button
-                    onClick={() => setIsExpanded(!isExpanded)}
+                    onClick={toggleExpand}
                     className="text-sm font-medium text-accent hover:text-accent/80 transition-colors self-start mb-4"
                 >
-                    {isExpanded ? 'Read Less' : 'Read More'}
+                    {isExpanded ? "Read Less" : "Read More"}
                 </button>
             )}
         </>
     );
 };
+
 
 const Projects = () => {
     const containerRef = useRef(null);
@@ -251,11 +294,11 @@ const Projects = () => {
                 <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                     Featured Projects
                 </h2>
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-start auto-rows-max">
                     {projects.map((project) => (
                         <div
                             key={project.title}
-                            className="project-card flex flex-col overflow-hidden rounded-lg border border-slate-800 bg-background shadow-sm transition-all hover:border-accent/50 hover:shadow-md"
+                            className="project-card flex flex-col h-full overflow-hidden rounded-lg border border-slate-800 bg-background shadow-sm transition-all hover:border-accent/50 hover:shadow-md"
                         >
                             {/* Dynamic Project Image */}
                             <div className="h-48 md:h-64 w-full relative">
