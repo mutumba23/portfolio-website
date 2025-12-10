@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://philip-nilsson.vercel.app/
+
+# Sitemaps
+Sitemap: https://philip-nilsson.vercel.app/sitemap.xml
