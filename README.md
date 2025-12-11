@@ -1,5 +1,8 @@
 # 👨‍💻 Philip's Portfolio Website
 
+![Node.js](https://img.shields.io/badge/Node.js-v18-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue)
+
 Welcome to my personal portfolio website! This project is a modern, responsive, and visually engaging showcase of my **18+ years of experience in IT operations** and my journey into **Automation Development**.
 
 ## 🚀 About The Project
@@ -20,6 +23,10 @@ This website is designed to highlight my professional background, technical skil
   - **Projects**: Detailed showcases of my work, including screenshots and links.
 - **📧 Contact Form**: Functional integration with **Formspree**.
 
+### 🔗 Live Demo
+
+- **Website**: [View the Live Demo](https://philip-nilsson.vercel.app/)
+
 ## 🛠️ Tech Stack
 
 | Category          | Technology                                                                    |
@@ -38,8 +45,8 @@ To run this project locally, follow these steps.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/)
+- Node.js (v18 or higher recommended)
+- npm (included with Node.js)
 
 ### Installation
 
@@ -72,8 +79,10 @@ src/
 ├── app/            # Next.js App Router (Pages, Layouts)
 ├── components/     # Reusable UI Components (Hero, Header, Projects, etc.)
 ├── config/         # Site Configuration (Theme, Constants)
-├── lib/            # Utility Functions
-└── styles/         # Global Styles & Tailwind Config
+├── lib/            # Utility Functions (GSAP setup, helpers)
+├── styles/         # Global Styles & Tailwind Config
+└── public/         # Static assets (images, resume.pdf, etc.)
+
 ```
 
 ## 📜 Scripts
