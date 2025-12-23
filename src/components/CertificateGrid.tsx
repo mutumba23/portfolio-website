@@ -1,34 +1,46 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { CATEGORY_COLOR_MAP } from "@/config/skillColors";
 import { PROVIDER_ICON_MAP } from "@/config/issuerIcons";
 
-const certificates = [
+interface Certificate {
+    id: number;
+    title: string;
+    issuer: string;
+    provider: string;
+    category: string;
+    year: number;
+    credentialUrl?: string;
+}
+
+const certificates: Certificate[] = [
     // --- AUTOMATION (Previously AI & AUTOMATION) ---
-    { id: 1, title: "Generative AI for Automation Certificate", issuer: "Coursera", provider: "Edureka", category: "Automation", year: 2025, credentialUrl: "https://coursera.org/share/45879b498a122185abce5436cd0b66b7" },
-    { id: 2, title: "Google IT Automation with Python Professional Certificate", issuer: "Coursera", provider: "Google", category: "Automation", year: 2025, credentialUrl: "https://coursera.org/share/62d8a9ee68781ae1b13be102649dd491" },
-    { id: 3, title: "Microsoft Copilot for Productivity Certificate", issuer: "Microsoft/LinkedIn Learning", provider: "Microsoft", category: "Automation", year: 2025, credentialUrl: "https://lnkd.in/dji4PKaC" },
-    { id: 4, title: "Generative AI Landscape", issuer: "LEX Certificates", provider: "Infosys", category: "Automation", year: 2025, credentialUrl: "https://media.licdn.com/dms/image/v2/D4E2DAQFeBbWHoNK0ow/profile-treasury-document-images_1280/B4EZT.GP1gHgAY-/1/1739429841015?e=1766016000&v=beta&t=219FLua6kkF1Z37bhdr94UESPolSzc1hEJHzjgXBMrQ" },
-    { id: 5, title: "Microsoft Power Automate (PL-100)", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Automation", year: 2024 },
+    { id: 1, title: "Managing Security & Enrollment with Intune Certificate", issuer: "Coursera", provider: "Packt", category: "Automation", year: 2025, credentialUrl: "https://coursera.org/share/51ceaf0d945d7a6fa20f915af931f6c0" },
+    { id: 2, title: "Generative AI for Automation Certificate", issuer: "Coursera", provider: "Edureka", category: "Automation", year: 2025, credentialUrl: "https://coursera.org/share/45879b498a122185abce5436cd0b66b7" },
+    { id: 3, title: "Google IT Automation with Python Professional Certificate", issuer: "Coursera", provider: "Google", category: "Automation", year: 2025, credentialUrl: "https://coursera.org/share/62d8a9ee68781ae1b13be102649dd491" },
+    { id: 4, title: "Microsoft Copilot for Productivity Certificate", issuer: "Microsoft/LinkedIn Learning", provider: "Microsoft", category: "Automation", year: 2025, credentialUrl: "https://lnkd.in/dji4PKaC" },
+    { id: 5, title: "Generative AI Landscape", issuer: "LEX Certificates", provider: "Infosys", category: "Automation", year: 2025, credentialUrl: "https://media.licdn.com/dms/image/v2/D4E2DAQFeBbWHoNK0ow/profile-treasury-document-images_1280/B4EZT.GP1gHgAY-/1/1739429841015?e=1766016000&v=beta&t=219FLua6kkF1Z37bhdr94UESPolSzc1hEJHzjgXBMrQ" },
+    { id: 6, title: "Microsoft Power Automate (PL-100)", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Automation", year: 2024 },
 
     // --- DATA (Previously DATA & CLOUD) ---
-    { id: 6, title: "Google Data Analytics Professional Certificate", issuer: "Coursera", provider: "Google", category: "Data", year: 2025, credentialUrl: "https://coursera.org/share/8b01b7f5a755534cfd0ec47c409c4c6c" },
-    { id: 7, title: "Microsoft Azure AI Essentials Professional Certificate", issuer: "Microsoft/LinkedIn Learning", provider: "Microsoft", category: "Data", year: 2025, credentialUrl: "https://lnkd.in/d_TiQqv6" },
-    { id: 8, title: "Microsoft Azure Fundamentals (AZ-900)", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Data", year: 2024 },
+    { id: 7, title: "Google Advanced Data Analytics Certificate", issuer: "Coursera", provider: "Google", category: "Data", year: 2025, credentialUrl: "https://coursera.org/share/e5c2f66843ce3df7e4da709c00c625dc" },
+    { id: 8, title: "Google Data Analytics Professional Certificate", issuer: "Coursera", provider: "Google", category: "Data", year: 2025, credentialUrl: "https://coursera.org/share/8b01b7f5a755534cfd0ec47c409c4c6c" },
+    { id: 9, title: "Microsoft Azure AI Essentials Professional Certificate", issuer: "Microsoft/LinkedIn Learning", provider: "Microsoft", category: "Data", year: 2025, credentialUrl: "https://lnkd.in/d_TiQqv6" },
+    { id: 10, title: "Microsoft Azure Fundamentals (AZ-900)", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Data", year: 2024 },
 
     // --- FRONTEND (Previously WEB DEVELOPMENT & UX) ---
-    { id: 9, title: "Web Development I - Introduction | 7.5 hp", issuer: "Luleå University", provider: "Luleå University", category: "Frontend", year: 2018 },
-    { id: 10, title: "Web Development II - Script languages and databases | 7.5 hp", issuer: "Luleå University", provider: "Luleå University", category: "Frontend", year: 2020 },
-    { id: 11, title: "UX Design Tips for Developers", issuer: "LEX Certificates", provider: "Infosys", category: "Frontend", year: 2025, credentialUrl: "https://media.licdn.com/dms/image/v2/D4D2DAQF5_bDiLagxng/profile-treasury-document-images_1280/B4DZWtDGKFHAAc-/1/1742365028187?e=1766016000&v=beta&t=_3zr2i4NtaIO1wkryAKQ6CECk5tJQsdODZBWQkEDrP4" },
-    { id: 12, title: "Building Websites with HTML, CSS, and JavaScript", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Frontend", year: 2022 },
-    { id: 13, title: "Electron Fundamentals", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Frontend", year: 2024 },
+    { id: 11, title: "Web Development I - Introduction | 7.5 hp", issuer: "Luleå University", provider: "Luleå University", category: "Frontend", year: 2018 },
+    { id: 12, title: "Web Development II - Script languages and databases | 7.5 hp", issuer: "Luleå University", provider: "Luleå University", category: "Frontend", year: 2020 },
+    { id: 13, title: "UX Design Tips for Developers", issuer: "LEX Certificates", provider: "Infosys", category: "Frontend", year: 2025, credentialUrl: "https://media.licdn.com/dms/image/v2/D4D2DAQF5_bDiLagxng/profile-treasury-document-images_1280/B4DZWtDGKFHAAc-/1/1742365028187?e=1766016000&v=beta&t=_3zr2i4NtaIO1wkryAKQ6CECk5tJQsdODZBWQkEDrP4" },
+    { id: 14, title: "Building Websites with HTML, CSS, and JavaScript", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Frontend", year: 2022 },
+    { id: 15, title: "Electron Fundamentals", issuer: "Pluralsight Courses", provider: "Pluralsight", category: "Frontend", year: 2024 },
 
     // --- PROFESSIONAL SKILLS (No change in key) ---
-    { id: 14, title: "CS200 Customer Service Proficiency", issuer: "LEX Certificates", provider: "Infosys", category: "Professional Skills", year: 2025 },
+    { id: 16, title: "CS200 Customer Service Proficiency", issuer: "LEX Certificates", provider: "Infosys", category: "Professional Skills", year: 2025 },
 
 ];
 
@@ -45,7 +57,7 @@ const CertificateGrid = () => {
     const handleFilterChange = (newFilter: string) => {
         if (newFilter === filter) return;
 
-        const ctx = gsap.context(() => {
+        gsap.context(() => {
             // Animate out
             gsap.to(".certificate-card", {
                 opacity: 0,
@@ -113,8 +125,8 @@ const CertificateGrid = () => {
                         // Primary Lookup: Provider (entity delivering training)
                         let iconDefinition = PROVIDER_ICON_MAP['DEFAULT'];
 
-                        if ((cert as any).provider) {
-                            iconDefinition = PROVIDER_ICON_MAP[(cert as any).provider] || PROVIDER_ICON_MAP['DEFAULT'];
+                        if (cert.provider) {
+                            iconDefinition = PROVIDER_ICON_MAP[cert.provider] || PROVIDER_ICON_MAP['DEFAULT'];
                         } else {
                             // Fallback to Issuer if Provider is missing (though data structure implies provider usually exists)
                             iconDefinition = PROVIDER_ICON_MAP[cert.issuer] || PROVIDER_ICON_MAP['DEFAULT'];
@@ -134,15 +146,15 @@ const CertificateGrid = () => {
                                             </h3>
 
                                             {/* Trainer (Slightly emphasized) */}
-                                            {(cert as any).provider && (cert as any).provider !== cert.issuer && (
+                                            {cert.provider && cert.provider !== cert.issuer && (
                                                 <p className="text-xs text-slate-400 mb-1">
-                                                    Trainer: <span className="text-accent font-medium">{(cert as any).provider}</span>
+                                                    Trainer: <span className="text-accent font-medium">{cert.provider}</span>
                                                 </p>
                                             )}
 
                                             {/* Issuer and Year (Clean, combined line) */}
                                             <p className="text-xs text-slate-500 mb-3">
-                                                {cert.issuer} {(cert as any).year && ` | ${(cert as any).year}`}
+                                                {cert.issuer} {cert.year && ` | ${cert.year}`}
                                             </p>
 
                                             {/* Category Tag remains at the bottom */}
@@ -156,10 +168,10 @@ const CertificateGrid = () => {
                                 </div>
 
                                 {/* Full-Width CTA Link */}
-                                {(cert as any).credentialUrl && (
+                                {cert.credentialUrl && (
                                     <div className="relative w-full h-12"> {/* New: Container for positioning */}
                                         <a
-                                            href={(cert as any).credentialUrl}
+                                            href={cert.credentialUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             // MODIFIED CLASSES:
