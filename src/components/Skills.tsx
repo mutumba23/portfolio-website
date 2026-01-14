@@ -13,7 +13,7 @@ const Skills = () => {
         {
             title: 'Automation & Scripting',
             colorKey: 'Automation',
-            skills: ['Python', 'PowerShell', 'AI Tools'],
+            skills: ['n8n Workflow Design', 'AI Agent Architecture', 'Prompt Engineering', 'Python', 'PowerShell'],
             isProfessional: false,
         },
         {

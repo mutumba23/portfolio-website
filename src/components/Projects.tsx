@@ -31,6 +31,7 @@ const TECH_TO_CATEGORY_MAP: Record<string, keyof typeof CATEGORY_COLOR_MAP> = {
     'Colyseus': 'Backend', // Real-time server framework
     'REST APIs': 'Backend',
     'CMS': 'Backend',
+    'Gotenberg': 'Backend',
 
 
     // --- DATA (Amber/Gold) ---
@@ -42,6 +43,8 @@ const TECH_TO_CATEGORY_MAP: Record<string, keyof typeof CATEGORY_COLOR_MAP> = {
     'Tableau': 'Data',
     'Kaggle': 'Data',
     'R (tidyverse/ggplot2)': 'Data',
+    'Google Fit API': 'Data',
+    'Quantified Self': 'Data',
 
     // --- AUTOMATION (Green) ---
     'Python': 'Automation', // Based on your primary usage for scripting/automation
@@ -49,10 +52,19 @@ const TECH_TO_CATEGORY_MAP: Record<string, keyof typeof CATEGORY_COLOR_MAP> = {
     'Concurrency / Threading': 'Automation',
     'pynput': 'Automation',
     'Automation': 'Automation',
-
+    'Telegram Bot API': 'Automation',
+    'n8n': 'Automation',
+    'Gemini AI': 'Automation',
+    'ChatGPT': 'Automation',
+    'AI Agents': 'Automation',
+    'AI Orchestration': 'Automation',
+    'Prompt Engineering': 'Automation',
+    'MS Graph API': 'Automation',
+        
     // --- INFRASTRUCTURE / NEUTRAL (Gray) ---
-    'Docker': 'Neutral',
+    'Docker': 'Infrastructure',
     'Firebase Auth': 'Infrastructure',
+    'Self-Hosting': 'Infrastructure',
 };
 
 // Function to parse the description string and replace **text** with <strong>text</strong>
@@ -181,6 +193,25 @@ const Projects = () => {
 
     const projects = [
         {
+            title: 'AI Metabolic Health & Nutrition Ecosystem',
+            description: `
+                An end-to-end automation platform designed for clinical-grade health optimization. The system orchestrates multiple AI agents to translate raw biometric data and subjective user feedback into actionable metabolic insights and family nutrition plans.
+
+                The architecture utilizes a "Three-Tier Agent" approach, ensuring a clean separation between data analysis, strategic planning, and operational execution.
+
+                **Key Technical Achievements:**
+                * **Multi-Agent Orchestration:** Designed a complex **n8n-based workflow** that coordinates Gemini 2.5 Pro and Gemini 3 Flash to perform longitudinal trend analysis and meal planning.
+                * **Predictive Milestone Forecasting:** Developed logic to calculate **metabolic velocity**, allowing the AI to project goal completion dates based on real-time physiological trends.
+                * **Recursive Context Management:** Implemented a system where previous AI-generated insights are written back to a database to serve as **"long-term memory"**, preventing context drift across different protocol phases.
+                * **Secure Document Pipeline:** Built a private, local document generation engine using **Gotenberg** and Docker to render professional Swedish health reports (PDF) without exposing sensitive telemetry to external servers.
+            `,
+            tags: ['n8n', 'Gemini AI', 'MS Graph API', 'Google Fit API', 'Quantified Self', 'Docker', 'Gotenberg'],
+            github: 'https://github.com/mutumba23/ai-health-ecosystem-docs',
+            demo: '#', 
+            imagePath: '/ai-healt-ecosystem.png',
+            imageAlt: 'Dashboard showing the AI Health Ecosystem workflow and generated reports.',
+        },
+        {
             title: 'Dynamic Portfolio & Custom CMS (Alice Nilsdotter)',
             description: `
                 A full-stack, dynamic personal portfolio featuring a **custom Content Management System (CMS)**, allowing the user to manage content and visual elements via a secure admin interface.
@@ -199,15 +230,6 @@ const Projects = () => {
             imageAlt: 'Screenshot of Alice Nilsdotter\'s portfolio website.',
         },
         {
-            title: 'AIK Case Study',
-            description: 'This project analyzes the team selection patterns of the new AIK football coach to assess their alignment with the club\'s financial strategy.\n\nSince top European leagues rely heavily on selling young talent for high transfer fees, a coaching philosophy that neglects youth development can suppress a key revenue stream.',
-            tags: ['Kaggle', 'Python', 'PostgreSQL', 'R (tidyverse/ggplot2)'],
-            github: 'https://github.com/mutumba23/AIK_Case_Study',
-            demo: '#',
-            imagePath: '/aik_age_trend_visualization_thumbnail.webp',
-            imageAlt: 'Screenshot of AIK Case Study.',
-        },
-        {
             title: 'ITSDTools',
             description: 'ITSD Tools is a desktop application built with Electron and Vue.js, designed to streamline daily IT support and administration tasks. The tool provides quick access to actions such as managing users, distribution lists, and mailboxes, especially useful in a multi-tenant Microsoft 365/Exchange environment.',
             tags: ['Electron', 'Vue.js', 'JavaScript', 'PowerShell', 'Vuetify', 'Vite', 'Firebase'],
@@ -215,6 +237,15 @@ const Projects = () => {
             demo: '#',
             imagePath: '/itsdtools.webp',
             imageAlt: 'Screenshot of ITSDTools.',
+        },
+        {
+            title: 'AIK Case Study',
+            description: 'This project analyzes the team selection patterns of the new AIK football coach to assess their alignment with the club\'s financial strategy.\n\nSince top European leagues rely heavily on selling young talent for high transfer fees, a coaching philosophy that neglects youth development can suppress a key revenue stream.',
+            tags: ['Kaggle', 'Python', 'PostgreSQL', 'R (tidyverse/ggplot2)'],
+            github: 'https://github.com/mutumba23/AIK_Case_Study',
+            demo: '#',
+            imagePath: '/aik_age_trend_visualization_thumbnail.webp',
+            imageAlt: 'Screenshot of AIK Case Study.',
         },
         {
             title: 'WotMud Graphics (Real-Time Multiplayer RPG)',
@@ -229,8 +260,8 @@ const Projects = () => {
                 * **Supabase:** Serves as the secure **PostgreSQL backend** for persistent data, including player authentication, inventory, character stats, and game world progression.
             `,
             tags: ['JavaScript', 'Phaser', 'Colyseus', 'Supabase', 'Express', 'Node.js', 'Firebase Auth'],
-            github: '#', // Keep private for now
-            demo: '#', // Use link to video/GIF walkthrough
+            github: '#',
+            demo: '#',
             imagePath: '/wotmud.webp',
             imageAlt: 'Screenshot of WotMud.',
         },
