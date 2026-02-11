@@ -65,6 +65,9 @@ const TECH_TO_CATEGORY_MAP: Record<string, keyof typeof CATEGORY_COLOR_MAP> = {
     'Docker': 'Infrastructure',
     'Firebase Auth': 'Infrastructure',
     'Self-Hosting': 'Infrastructure',
+    'VPS': 'Infrastructure',
+    'Linux': 'Infrastructure',
+    'Caddy / Reverse Proxy': 'Infrastructure',
 };
 
 // Function to parse the description string and replace **text** with <strong>text</strong>
@@ -204,8 +207,9 @@ const Projects = () => {
                 * **Predictive Milestone Forecasting:** Developed logic to calculate **metabolic velocity**, allowing the AI to project goal completion dates based on real-time physiological trends.
                 * **Recursive Context Management:** Implemented a system where previous AI-generated insights are written back to a database to serve as **"long-term memory"**, preventing context drift across different protocol phases.
                 * **Secure Document Pipeline:** Built a private, local document generation engine using **Gotenberg** and Docker to render professional Swedish health reports (PDF) without exposing sensitive telemetry to external servers.
+                * **Robust Cloud Infrastructure:** Self-hosted the entire engine on a **Linux VPS** using **Docker Compose** and secure reverse proxy configurations to ensure 24/7 availability for the health agents.
             `,
-            tags: ['n8n', 'Gemini AI', 'MS Graph API', 'Google Fit API', 'Quantified Self', 'Docker', 'Gotenberg'],
+            tags: ['n8n', 'Gemini AI', 'VPS', 'MS Graph API', 'Google Fit API', 'Quantified Self', 'Docker', 'Gotenberg', 'Linux'],
             github: 'https://github.com/mutumba23/ai-health-ecosystem-docs',
             demo: '#', 
             imagePath: '/ai-healt-ecosystem.png',
