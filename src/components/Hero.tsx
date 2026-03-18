@@ -39,6 +39,7 @@ const Hero = () => {
                                 src="/profile.webp"
                                 alt="Profile Photo"
                                 fill
+                                sizes="(max-width: 768px) 256px, 384px" // Hint: Adjust these numbers to match your CSS width
                                 className="rounded-full border-4 border-slate-700 object-cover shadow-2xl"
                                 priority
                             />
