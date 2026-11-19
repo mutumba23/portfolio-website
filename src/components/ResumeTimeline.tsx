@@ -11,7 +11,7 @@ const ResumeTimeline = () => {
             year: "2024 – Present",
             title: "Technical Process Specialist",
             company: "Infosys",
-            description: "Transitioned to Infosys, focusing on technical process optimization and specialized infrastructure support.",
+            description: "Leading technical execution for IKEA of Sweden's Windows 11 migration (3,000+ clients) using Microsoft Intune and Autopilot. Managing complex Test Lab system transitions, vendor coordination, and custom PowerShell/Python automation tools for data validation and migration tracking.",
             isGroup: false
         },
         {

@@ -35,13 +35,13 @@ const About = () => {
                 </h2>
                 <div className="mx-auto max-w-3xl space-y-6 text-lg text-slate-400">
                     <p className="about-text">
-                        My career spans <b className="highlight">18+ years</b> in global IT support and process management. I am a structured problem-solver with deep institutional knowledge of the technical and procedural challenges within large-scale enterprises.
+                        My career spans <b className="highlight">19+ years</b> in global IT operations, endpoint migrations, and process management. I am a structured problem-solver with deep institutional knowledge of the technical and procedural challenges within large-scale enterprises.
                     </p>
                     <p className="about-text">
-                        Driven by a focus on efficiency, I <b className="highlight">taught myself full-stack development</b> (Vue.js, Electron, Python) to directly address operational bottlenecks. My most significant work involves <b className="highlight">developing and deploying an internal automation tool</b> that streamlined critical admin tasks, resulting in documented <b className="highlight">savings of over 2,000+ hours annually</b> for my team.
+                        Driven by a focus on efficiency, I <b className="highlight">taught myself full-stack development and workflow automation</b> (Python, PowerShell, Vue.js, Next.js, Electron, and n8n) to directly eliminate operational bottlenecks. My work includes <b className="highlight">developing and deploying internal automation tools</b> that streamlined critical admin tasks, resulting in documented <b className="highlight">savings of over 2,000 hours annually</b>.
                     </p>
                     <p className="about-text">
-                        I thrive in collaborative, cross-functional environments. I prioritize delivering <b className="highlight">maintainable solutions</b> and leveraging <b className="highlight">data analysis</b> to ensure tangible business outcomes. I am now seeking roles that allow me to fully integrate my proven operational knowledge with my development and automation capabilities.
+                        Today, I combine enterprise infrastructure execution—such as large-scale Windows 11/Intune rollouts and specialized Test Lab migrations—with <b className="highlight">data analysis, AI orchestration, and maintainable software</b>. I am seeking roles where I can bridge operational reality with modern automation and full-stack development.
                     </p>
                 </div>
             </div>

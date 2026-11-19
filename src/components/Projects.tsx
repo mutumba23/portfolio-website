@@ -234,6 +234,25 @@ const Projects = () => {
             imageAlt: 'Screenshot of Alice Nilsdotter\'s portfolio website.',
         },
         {
+            title: 'Enterprise Windows 11 Migration Automation Suite',
+            description: `
+                A collection of custom automation scripts, reporting pipelines, and live dashboards built to eliminate manual bottlenecks during a large-scale enterprise migration of 3,000+ client devices to Windows 11 (Microsoft Intune & Autopilot).
+
+                By replacing repetitive pre-migration checks, spreadsheet cross-referencing, and manual floor logistics with deterministic scripts, the toolkit reduced human error and gave technicians real-time visibility across the rollout.
+
+                **Key Technical Components:**
+- **Pre-Migration Backup & Share Discovery (PowerShell):** Automated extraction of user Active Directory network share mappings and verified OneDrive Known Folder Backup status prior to device wipe, enabling seamless post-migration restoration.
+- **Automated Daily Tech Bar Checklists (Python & Playwright):** Built a data pipeline merging booking schedules with device inventory exports to automatically generate printable daily PDF job sheets, flagging hardware replacements, device models, and migration prerequisites per user.
+- **Data Reconciliation & Deduplication (Python & DuckDB):** Created high-speed analytical scripts to cross-reference multiple CSV/Excel inventory exports, identifying duplicate user/device records, orphaned clients, and blocker statuses across 1M+ software rows.
+- **Live Migration & Test Lab Dashboards (JavaScript, SheetJS & Tailwind CSS):** Developed standalone, browser-based reporting dashboards for SharePoint/Teams that parse live Excel tracking sheets into interactive status charts, vendor dependency matrices, and risk views.
+            `,
+            tags: ['PowerShell', 'Python', 'DuckDB', 'Playwright', 'JavaScript', 'Intune / Autopilot', 'Automation'],
+            github: '#',
+            demo: '#',
+            imagePath: '/migration-suite.webp',
+            imageAlt: 'Anonymized architecture and dashboard overview of the Windows 11 migration automation toolkit.',
+        },
+        {
             title: 'ITSDTools',
             description: 'ITSD Tools is a desktop application built with Electron and Vue.js, designed to streamline daily IT support and administration tasks. The tool provides quick access to actions such as managing users, distribution lists, and mailboxes, especially useful in a multi-tenant Microsoft 365/Exchange environment.',
             tags: ['Electron', 'Vue.js', 'JavaScript', 'PowerShell', 'Vuetify', 'Vite', 'Firebase'],
@@ -251,7 +270,7 @@ const Projects = () => {
             imagePath: '/aik_age_trend_visualization_thumbnail.webp',
             imageAlt: 'Screenshot of AIK Case Study.',
         },
-        {
+        /*{
             title: 'WotMud Graphics (Real-Time Multiplayer RPG)',
             description: `
                 An ambitious, personal full-stack project dedicated to modernizing the classic MUD (Multi-User Dungeon) experience with an intuitive graphical interface. This extensive application is built around a real-time, server-authoritative architecture to support persistent, synchronized multiplayer interactions.
@@ -268,7 +287,7 @@ const Projects = () => {
             demo: '#',
             imagePath: '/wotmud.webp',
             imageAlt: 'Screenshot of WotMud.',
-        },
+        },*/
         {
             title: 'Collaborative Travel Planner',
             description: `
@@ -289,7 +308,7 @@ const Projects = () => {
             imagePath: '/travel_planner.webp',
             imageAlt: 'Screenshot of Travel Planner.',
         },
-        {
+        /*{
             title: 'Fantasy Football Scoring & Trade Engine (Local League)',
             description: `
                 A full-stack application designed to host a local fantasy football league based on real-life player performance metrics (scores, assists, cards, etc.). The project established a robust system to handle complex, turn-based transactions and calculation logic.
@@ -320,7 +339,7 @@ const Projects = () => {
             demo: '#', 
             imagePath: '/autoclicker.webp',
             imageAlt: 'Screenshot of the Auto Clicker utility interface showing configuration settings.',
-        },
+        },*/
     ];
 
     return (

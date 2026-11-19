@@ -11,66 +11,76 @@ const Skills = () => {
 
     const categories = [
         {
-            title: 'Automation & Scripting',
+            title: 'Automation & AI',
             colorKey: 'Automation',
-            skills: ['n8n Workflow Design', 'AI Agent Architecture', 'Prompt Engineering', 'Python', 'PowerShell'],
+            skills: [
+                'n8n Workflow Design',
+                'AI Agent Architecture',
+                'Prompt Engineering',
+                'PowerShell',
+                'Python',
+            ],
             isProfessional: false,
         },
         {
-            title: 'Frontend & App Dev',
+            title: 'Frontend & App Development',
             colorKey: 'Frontend',
-            skills: ['JavaScript', 'HTML', 'CSS', 'VueJS', 'Electron', 'React (Personal Projects)', 'UX/UI Awareness', 'Design Fundamentals'],
+            skills: [
+                'JavaScript',
+                'Vue.js',
+                'React / Next.js',
+                'Electron',
+                'Tailwind CSS',
+                'HTML & CSS',
+            ],
             isProfessional: false,
         },
         {
-            title: 'Backend & APIs',
+            title: 'Backend, Data & APIs',
             colorKey: 'Backend',
-            skills: ['Node.js', 'Express', 'REST APIs', 'Colyseus', 'Python'],
+            skills: [
+                'Node.js & Express',
+                'REST APIs & Webhooks',
+                'PostgreSQL / Supabase',
+                'Firebase / Firestore',
+            ],
             isProfessional: false,
         },
         {
-            title: 'Data & Databases',
-            colorKey: 'Data',
-            skills: ['SQL', 'Spreadsheets', 'PostgreSQL', 'Firestore'],
-            isProfessional: false,
-        },
-        {
-            title: 'Cloud & Infrastructure',
+            title: 'Cloud, Endpoint & Infrastructure',
             colorKey: 'Infrastructure',
-            skills: ['Azure Fundamentals', 'Firebase (Auth)'],
+            skills: [
+                'Microsoft Intune & Autopilot',
+                'Entra ID & Active Directory',
+                'Microsoft 365 & Exchange',
+                'Azure Fundamentals',
+                'Global Software Rollouts',
+            ],
             isProfessional: false,
         },
         {
-            title: 'Technical Operations & Support',
-            colorKey: 'Infrastructure',
-            skills: ['AD & LDAP', 'VPN (Cisco)', 'SMTP/Email Services', 'Ticketing & Incident Mgmt', 'Global Software Rollouts'],
-            isProfessional: false,
-        },
-        // Professional Skills
-        {
-            title: 'Operational Excellence & Process',
-            colorKey: 'SoftSkills', // Neutral
-            skills: ['Incident & Problem Management', 'ITIL Process Awareness', 'Continuous Improvement'],
+            title: 'Process & Delivery',
+            colorKey: 'SoftSkills',
+            skills: [
+                'Root Cause Analysis',
+                'Incident & Problem Management',
+                'ITIL Process Management',
+                'Continuous Process Improvement',
+                'Data-Driven Decision Making',
+            ],
             isProfessional: true,
         },
         {
-            title: 'Teamwork & Collaboration',
-            colorKey: 'SoftSkills', // Neutral
-            skills: ['Cross-Functional Collaboration', 'Training & Knowledge Sharing'],
+            title: 'Leadership & Collaboration',
+            colorKey: 'SoftSkills',
+            skills: [
+                'Stakeholder Management',
+                'Cross-Functional Collaboration',
+                'Technical Training & Documentation',
+                'Vendor Coordination',
+            ],
             isProfessional: true,
         },
-        {
-            title: 'Problem Solving & Analysis',
-            colorKey: 'SoftSkills', // Neutral
-            skills: ['Problem Solving', 'Root Cause Analysis', 'Analytical Thinking', 'Data-Driven Decision Making'],
-            isProfessional: true,
-        },
-        {
-            title: 'Service & Stakeholder Focus',
-            colorKey: 'SoftSkills', // Neutral
-            skills: ['Customer Focus', 'Stakeholder Management'],
-            isProfessional: true,
-        }
     ];
 
     const [visibleCategories, setVisibleCategories] = useState(categories);
