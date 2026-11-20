@@ -262,6 +262,25 @@ const Projects = () => {
             imageAlt: 'Screenshot of ITSDTools.',
         },
         {
+            title: 'Family XP & Gamified Task PWA',
+            description: `
+                A full-stack, mobile-first Progressive Web App (PWA) designed to gamify household responsibilities, habits, and reward economies for the entire family. Built with **Next.js 15 (App Router)** and **Supabase**, the application separates long-term progression (XP & leveling) from a real-world pegged reward currency.
+
+                The architecture enforces strict role-based isolation between parent administrators and child accounts while delivering an instant, optimistic UI and native mobile push alerts.
+
+                **Key Technical Achievements:**
+- **Database Security & Atomic Transactions (Supabase):** Implemented **PostgreSQL Row Level Security (RLS)** policies and atomic **RPC functions** to ensure tamper-proof XP/coin balances, photo-proof approvals, and cascading history protection.
+- **Native Web Push & Service Workers:** Built a custom **Service Worker** with **VAPID-encrypted Web Push** notifications (without third-party notification SaaS), alerting parent devices in real time upon task submissions and automatically pruning stale subscriptions on sign-out.
+- **Multi-Role Economy & Audience Filtering:** Engineered distinct interfaces and task/reward visibility rules for children and adults, paired with a balanced **1:1 SEK reward economy** and optimistic 0ms client-side state updates.
+- **Media Proof Pipeline:** Integrated **Supabase Storage** with automated retention cleanup for photo-verified chores alongside a streamlined admin review queue.
+            `,
+            tags: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL / RLS', 'PWA / Web Push', 'Full-Stack'],
+            github: '#',
+            demo: '#', 
+            imagePath: '/family-xp.webp',
+            imageAlt: 'Mobile screenshot of the Family XP & Gamified Task PWA showing XP levels, coin balance, and admin controls.',
+        },
+        /*{
             title: 'AIK Case Study',
             description: 'This project analyzes the team selection patterns of the new AIK football coach to assess their alignment with the club\'s financial strategy.\n\nSince top European leagues rely heavily on selling young talent for high transfer fees, a coaching philosophy that neglects youth development can suppress a key revenue stream.',
             tags: ['Kaggle', 'Python', 'PostgreSQL', 'R (tidyverse/ggplot2)'],
@@ -270,7 +289,7 @@ const Projects = () => {
             imagePath: '/aik_age_trend_visualization_thumbnail.webp',
             imageAlt: 'Screenshot of AIK Case Study.',
         },
-        /*{
+        {
             title: 'WotMud Graphics (Real-Time Multiplayer RPG)',
             description: `
                 An ambitious, personal full-stack project dedicated to modernizing the classic MUD (Multi-User Dungeon) experience with an intuitive graphical interface. This extensive application is built around a real-time, server-authoritative architecture to support persistent, synchronized multiplayer interactions.
